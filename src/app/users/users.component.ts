@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users',
@@ -13,6 +14,9 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get<Array<any>>('https://jsonplaceholder.typicode.com/users')
+      .pipe(
+        shareReplay()
+      )
       .subscribe(res => {
         this.users = res;
         console.log(res);
