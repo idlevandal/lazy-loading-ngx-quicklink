@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lazy-loading';
+
+  public show: boolean = false;
+  
+  showLink(): void {
+    this.show = true;
+  }
 }
