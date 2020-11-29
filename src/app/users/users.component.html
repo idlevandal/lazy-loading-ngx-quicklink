@@ -1,1 +1,31 @@
-<p>users works!</p>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Annual Salary</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!--  -->
+            <tr *ngFor='let employee of users; trackBy: trackByUserId'>
+                <td>{{employee.id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.address.city}}</td>
+
+            </tr>
+            <tr *ngIf="!users || users.length==0">
+                <td colspan="5">
+                    No employees to display
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <button class="btn btn-primary" (click)='getEmployees()'>Refresh Users</button>
+
+</div>

@@ -13,14 +13,17 @@ export class UsersComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<Array<any>>('https://jsonplaceholder.typicode.com/users')
-      .pipe(
-        shareReplay()
-      )
-      .subscribe(res => {
-        this.users = res;
-        console.log(res);
-      });
+    this.http.get<Array<any>>('https://jsonplaceholder.typicode.com/users?_start=0&_limit=5')
+      .subscribe(res => this.users = res);
+  }
+  
+  trackByUserId(index: number, user: any) {
+    return user.id;
+  }
+  
+  getEmployees(): void {
+    this.http.get<Array<any>>('https://jsonplaceholder.typicode.com/users?_start=0&_limit=6')
+    .subscribe(res => this.users = res);
   }
 
 }
