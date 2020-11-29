@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { shareReplay } from 'rxjs/operators';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-users',
@@ -10,10 +11,10 @@ import { shareReplay } from 'rxjs/operators';
 export class UsersComponent implements OnInit {
 
   public users: Array<any>;
-  constructor(private http: HttpClient) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.http.get<Array<any>>('https://jsonplaceholder.typicode.com/users?_start=0&_limit=5')
+    this.userService.getUsers(5)
       .subscribe(res => this.users = res);
   }
   
@@ -22,8 +23,8 @@ export class UsersComponent implements OnInit {
   }
   
   getEmployees(): void {
-    this.http.get<Array<any>>('https://jsonplaceholder.typicode.com/users?_start=0&_limit=6')
-    .subscribe(res => this.users = res);
+    this.userService.getUsers(6)
+      .subscribe(res => this.users = res);
   }
 
 }
