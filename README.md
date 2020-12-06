@@ -9,3 +9,6 @@ https://www.youtube.com/watch?v=l8mCutUMh78&ab_channel=GoogleChromeDevelopers
 
 ## Article
 https://dev.to/salimchemes/optimising-angular-performance-with-lazy-loading-and-quicklink-3j66
+
+### IMPORTANT!!!
+When using in a feature module with child routes you MUST also import QuicklinkModule into the feature module
